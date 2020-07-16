@@ -1,0 +1,9 @@
+[Unit]
+Description=Run TADFigyelo service every X sec
+
+[Timer]
+OnUnitActiveSec=10s
+AccuracySec=1us
+
+[Install]
+WantedBy=multi-user.target
