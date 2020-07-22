@@ -3,7 +3,7 @@ Description=Running TADFigyelo scripts
 
 [Service]
 Type=oneshot
-ExecStart=/bin/bash /path/to/scripts/TRC.sh
+ExecStart=/bin/bash /path/to/scripts/tadBase.sh
 # masodik fele a paramter script ami futni fog
 
 [Install]

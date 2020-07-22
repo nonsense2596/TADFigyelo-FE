@@ -1,0 +1,4 @@
+parameterize scripts, instead of copy pasting them into different folders
+
+different parameterized scripts (e.g. villany / info / bprof)
+should read from different source files, and output to their respective directories
