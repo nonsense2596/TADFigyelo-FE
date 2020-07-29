@@ -68,7 +68,7 @@
 <div class="container">
     <h1>G<i>i</i><b>[</b>T<b>]</b>AD</h1>
     <div class="row mt-4">
-        <?php ListItems(1); ?>
+        <?php ListItems(); ?>
     </div>
 </div>
 

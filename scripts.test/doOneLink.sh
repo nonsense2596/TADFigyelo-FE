@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# $2 --> még nincs lekezelve
-# lehet vill/bprof/info, ez a mappa amibe menteni kell
+
 # $1 ($line) --> szokásos param, a tárgykód
+# $2 --> még nincs lekezelve, mappa név mint vill/bprof/info
 
 LANG=HU_hu.UTF-8 
-file="tads/$1.html"
+file="$2/tads/$1.html"
 link="https://portal.vik.bme.hu/kepzes/targyak/$1/hu/print/"
 nfile="wget.temp"
 
@@ -20,11 +20,11 @@ else
 	then
 		#RÉGIT LEMENTJÜK DÁTUMOZVA
 		DATE=$(date +"%Y%m%d_%H")
-		cp $file "tads/${1}_$DATE.html"
+		cp $file "$2/tads/${1}_$DATE.html"
 		#DIFF 	file készítés és kiegészítés formázással
 		sh ./makeDiffFile.sh $file $nfile "tads/$1.diff.html"
-		sed -e 's/\(^[-]\)\(.*\)/<span style="color: #FF0000; font-weight: bold">\2<\/span>/g' -i "tads/$1.diff.html"
-		sed -e 's/\(^[+]\)\(.*\)/<span style="color: #00FF00; font-weight: bold">\2<\/span>/g' -i "tads/$1.diff.html"
+		sed -e 's/\(^[-]\)\(.*\)/<span style="color: #FF0000; font-weight: bold">\2<\/span>/g' -i "$2/tads/$1.diff.html"
+		sed -e 's/\(^[+]\)\(.*\)/<span style="color: #00FF00; font-weight: bold">\2<\/span>/g' -i "$2/tads/$1.diff.html"
 		# régi file csere újra
 		cp $nfile $file
 	else
