@@ -1,8 +1,8 @@
 <?php
     // TODO az opendir-t kicserélni a tényleges dirre, ahol majd a fileok lesznek
     // akár változóba menteni, mert sokszor használom
-    function ListItems() {
-        if ($handle = opendir('.')) {
+    function ListItems($major) {
+        if ($handle = opendir('./scripts.test/'.$major.'/tads')) {
             while (false !== ($entry = readdir($handle))) {
                 if ($entry != "." && $entry != "..") {
                     if(strpos($entry,"diff")!==false){  // igy csak azokat mutattja amit érdemes, amiből van diff file
@@ -39,14 +39,14 @@
                             }
                         }
 
-                        echo "<div class='col-sm-6 mb-4'><div class='card'>";
+                        echo "<div class='card mb-4'>";
                         echo "<h5 class='card-header bg-primary text-white'>$title</h5>";
                         echo "<div class='card-body'>";
                         echo "<h6 class='card-text'><a class='card-text' href='$original'>Original: $original </a></h6><hr class='mt-3 mb-1'>";
                         echo $diffprint;
                         echo "</div>";
                         echo "<div class='card-footer'><a href='$entry'>Show latest diff</a></div>";
-                        echo "</div></div>";
+                        echo "</div>";
                     }
 
                 }
@@ -68,7 +68,18 @@
 <div class="container">
     <h1>G<i>i</i><b>[</b>T<b>]</b>AD</h1>
     <div class="row mt-4">
-        <?php ListItems(); ?>
+        <div class="col-4">
+            <h2>Info</h2>
+            <?php ListItems("info"); ?>
+        </div>
+        <div class="col-4">
+            <h2>Vill</h2>
+            <?php ListItems("vill"); ?>
+        </div>
+        <div class="col-4">
+            <h2>BProf</h2>
+            <?php ListItems("bprof"); ?>
+        </div>
     </div>
 </div>
 
